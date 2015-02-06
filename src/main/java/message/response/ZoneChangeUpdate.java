@@ -1,11 +1,11 @@
-package messages;
+package message.response;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by pborges on 1/22/15.
  */
-public class ZoneChangeUpdate implements ElkResponse{
+public class ZoneChangeUpdate implements ElkResponse {
     public enum ZoneStatus {
         @SerializedName("Normal")
         NORMAL,

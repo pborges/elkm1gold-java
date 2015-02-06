@@ -1,6 +1,6 @@
 package decoder;
 
-import messages.ElkResponse;
+import message.response.ElkResponse;
 
 /**
  * Created by pborges on 1/22/15.

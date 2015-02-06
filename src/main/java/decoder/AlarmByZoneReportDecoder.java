@@ -1,6 +1,6 @@
 package decoder;
 
-import messages.AlarmByZoneResponse;
+import message.response.AlarmByZoneResponse;
 
 /**
  * Created by pborges on 1/22/15.

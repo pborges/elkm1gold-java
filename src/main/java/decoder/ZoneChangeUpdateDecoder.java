@@ -1,6 +1,6 @@
 package decoder;
 
-import messages.ZoneChangeUpdate;
+import message.response.ZoneChangeUpdate;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;

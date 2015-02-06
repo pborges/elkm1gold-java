@@ -1,4 +1,4 @@
-package messages;
+package message.response;
 
 import java.util.HashMap;
 

@@ -1,7 +1,7 @@
 package decoder;
 
 import com.google.gson.Gson;
-import messages.ElkResponse;
+import message.response.ElkResponse;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;

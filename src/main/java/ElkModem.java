@@ -1,9 +1,10 @@
 import encoder.ElkRequestEncoder;
+import exception.AlreadyStartedException;
 import gnu.io.*;
 import helper.ElkResponseProcessor;
 import helper.ElkSerialReader;
-import messages.ElkRequest;
-import messages.ElkResponse;
+import message.request.ElkRequest;
+import message.response.ElkResponse;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class ElkModem {
     private ElkRequestEncoder elkRequestEncoder = new ElkRequestEncoder();
     private OutputStreamWriter outputStreamWriter;
     private HashMap<Class<? extends ElkResponse>, ElkResponseProcessor<? extends ElkResponse>> elkResponseProcessorMap = new HashMap<>();
+    private boolean isStarted = false;
 
     public ElkModem(String serialPortName, Integer baud) throws PortInUseException, NoSuchPortException, UnsupportedCommOperationException, IOException {
         log.debug("ElkModem(" + serialPortName + ", " + baud + ")");
@@ -32,13 +34,16 @@ public class ElkModem {
         outputStreamWriter = new OutputStreamWriter(serialPort.getOutputStream());
     }
 
-    public void addListener(Class<? extends ElkResponse> clazz, ElkResponseProcessor<? extends ElkResponse> processor) {
+    public void addListener(Class<? extends ElkResponse> clazz, ElkResponseProcessor<? extends ElkResponse> processor) throws AlreadyStartedException {
         log.debug("Loading " + clazz.getSimpleName() + " processor " + processor.getClass().getSimpleName());
+        if(isStarted) {
+            throw new AlreadyStartedException();
+        }
         elkResponseProcessorMap.put(clazz, processor);
     }
 
     public void listen() throws IOException {
-
+        isStarted = true;
         ElkSerialReader elkSerialReader = new ElkSerialReader(serialPort.getInputStream(), elkResponseProcessorMap);
         new Thread(elkSerialReader).start();
     }

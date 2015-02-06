@@ -1,0 +1,25 @@
+#surefire
+#Thu Feb 05 19:16:14 PST 2015
+testClassesDirectory=/home/pborges/git/elkm1gold/target/test-classes
+classPathUrl.4=/home/pborges/.m2/repository/com/nullpntr/rxtx/2.2pre2/rxtx-2.2pre2.jar
+forkMode=once
+classPathUrl.3=/home/pborges/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar
+classPathUrl.2=/home/pborges/.m2/repository/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar
+useManifestOnlyJar=true
+classPathUrl.1=/home/pborges/git/elkm1gold/target/classes
+reportsDirectory=/home/pborges/git/elkm1gold/target/surefire-reports
+classPathUrl.0=/home/pborges/git/elkm1gold/target/test-classes
+providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
+testSuiteDefinitionTestSourceDirectory=/home/pborges/git/elkm1gold/src/test/java
+surefireClassPathUrl.1=/home/pborges/.m2/repository/org/apache/maven/surefire/surefire-api/2.10/surefire-api-2.10.jar
+surefireClassPathUrl.0=/home/pborges/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.10/surefire-junit3-2.10.jar
+runOrder=filesystem
+useSystemClassLoader=true
+excludes0=**/*$*
+isTrimStackTrace=true
+enableAssertions=true
+includes2=**/*TestCase.java
+failIfNoTests=false
+includes1=**/*Test.java
+includes0=**/Test*.java
+childDelegation=false

@@ -1,7 +1,7 @@
 package decoder;
 
-import messages.ArmingStatus;
-import messages.ArmingStatusResponse;
+import message.response.ArmingStatus;
+import message.response.ArmingStatusResponse;
 
 /**
  * Created by pborges on 1/26/15.

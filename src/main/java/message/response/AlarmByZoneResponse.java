@@ -1,4 +1,4 @@
-package messages;
+package message.response;
 
 /**
  * Created by pborges on 1/22/15.

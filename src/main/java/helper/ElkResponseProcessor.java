@@ -1,6 +1,6 @@
 package helper;
 
-import messages.ElkResponse;
+import message.response.ElkResponse;
 
 /**
  * Created by pborges on 2/5/15.

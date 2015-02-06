@@ -1,4 +1,4 @@
-package messages;
+package message.request;
 
 /**
  * Created by pborges on 1/22/15.
