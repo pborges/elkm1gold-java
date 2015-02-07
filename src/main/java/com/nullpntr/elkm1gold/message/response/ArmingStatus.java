@@ -1,4 +1,4 @@
-package message.response;
+package com.nullpntr.elkm1gold.message.response;
 
 import java.util.HashMap;
 

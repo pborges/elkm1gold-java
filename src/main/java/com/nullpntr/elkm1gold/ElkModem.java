@@ -1,10 +1,12 @@
-import encoder.ElkRequestEncoder;
-import exception.AlreadyStartedException;
+package com.nullpntr.elkm1gold;
+
+import com.nullpntr.elkm1gold.encoder.ElkRequestEncoder;
+import com.nullpntr.elkm1gold.exception.AlreadyStartedException;
 import gnu.io.*;
-import helper.ElkResponseProcessor;
-import helper.ElkSerialReader;
-import message.request.ElkRequest;
-import message.response.ElkResponse;
+import com.nullpntr.elkm1gold.helper.ElkResponseProcessor;
+import com.nullpntr.elkm1gold.helper.ElkSerialReader;
+import com.nullpntr.elkm1gold.message.request.ElkRequest;
+import com.nullpntr.elkm1gold.message.response.ElkResponse;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class ElkModem {
     private boolean isStarted = false;
 
     public ElkModem(String serialPortName, Integer baud) throws PortInUseException, NoSuchPortException, UnsupportedCommOperationException, IOException {
-        log.debug("ElkModem(" + serialPortName + ", " + baud + ")");
+        log.debug("com.nullpntr.elkm1gold.ElkModem(" + serialPortName + ", " + baud + ")");
 
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(serialPortName);
         CommPort commPort = portIdentifier.open(this.getClass().getName(), 2000);
@@ -43,6 +45,7 @@ public class ElkModem {
     }
 
     public void listen() throws IOException {
+        log.debug("Starting listener");
         isStarted = true;
         ElkSerialReader elkSerialReader = new ElkSerialReader(serialPort.getInputStream(), elkResponseProcessorMap);
         new Thread(elkSerialReader).start();

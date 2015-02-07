@@ -1,6 +1,6 @@
-package encoder;
+package com.nullpntr.elkm1gold.encoder;
 
-import message.request.ElkRequest;
+import com.nullpntr.elkm1gold.message.request.ElkRequest;
 
 /**
  * Created by pborges on 2/5/15.

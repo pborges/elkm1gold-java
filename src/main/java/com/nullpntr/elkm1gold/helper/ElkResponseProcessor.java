@@ -1,6 +1,6 @@
-package helper;
+package com.nullpntr.elkm1gold.helper;
 
-import message.response.ElkResponse;
+import com.nullpntr.elkm1gold.message.response.ElkResponse;
 
 /**
  * Created by pborges on 2/5/15.

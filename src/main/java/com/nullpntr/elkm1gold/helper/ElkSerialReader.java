@@ -1,14 +1,15 @@
-package helper;
+package com.nullpntr.elkm1gold.helper;
 
-import decoder.ElkResponseDecoderManager;
-import encoder.ElkRequestEncoder;
-import message.response.ElkResponse;
+import com.nullpntr.elkm1gold.decoder.ElkResponseDecoderManager;
+import com.nullpntr.elkm1gold.encoder.ElkRequestEncoder;
+import com.nullpntr.elkm1gold.message.response.ElkResponse;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by pborges on 2/5/15.
@@ -24,6 +25,9 @@ public class ElkSerialReader implements Runnable {
     public ElkSerialReader(InputStream inputStream, HashMap<Class<? extends ElkResponse>, ElkResponseProcessor<? extends ElkResponse>> elkResponseProcessorMap) {
         this.inputStream = inputStream;
         this.elkResponseProcessorMap = elkResponseProcessorMap;
+        for (Map.Entry<Class<? extends ElkResponse>, ElkResponseProcessor<? extends ElkResponse>> entry : elkResponseProcessorMap.entrySet()) {
+            log.debug("Loaded Processor " + entry.getValue().getClass().getSimpleName() + " for " + entry.getKey().getSimpleName());
+        }
     }
 
     @Override
@@ -35,12 +39,15 @@ public class ElkSerialReader implements Runnable {
             while ((line = bufferedReader.readLine()) != null) {
                 log.debug("Read: " + line);
                 ElkResponse decoded = elkResponseDecoderManager.decode(line);
+                if(decoded == null){
+                    continue;
+                }
                 @SuppressWarnings("SuspiciousMethodCalls")
                 ElkResponseProcessor elkResponseProcessor = elkResponseProcessorMap.get(decoded.getClass());
-                if(elkResponseProcessor != null) {
+                if (elkResponseProcessor != null) {
                     log.warn("Found processor for " + decoded.getClass().getSimpleName() + " of type " + elkResponseProcessor.getClass());
                     elkResponseProcessor.processRecord(decoded);
-                }else{
+                } else {
                     log.warn("No processor for " + decoded.getClass().getSimpleName());
                 }
             }

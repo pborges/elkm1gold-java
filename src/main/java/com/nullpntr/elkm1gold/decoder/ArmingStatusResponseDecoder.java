@@ -1,7 +1,7 @@
-package decoder;
+package com.nullpntr.elkm1gold.decoder;
 
-import message.response.ArmingStatus;
-import message.response.ArmingStatusResponse;
+import com.nullpntr.elkm1gold.message.response.ArmingStatus;
+import com.nullpntr.elkm1gold.message.response.ArmingStatusResponse;
 
 /**
  * Created by pborges on 1/26/15.

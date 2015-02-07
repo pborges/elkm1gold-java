@@ -1,6 +1,6 @@
-package decoder;
+package com.nullpntr.elkm1gold.decoder;
 
-import message.response.ZoneChangeUpdate;
+import com.nullpntr.elkm1gold.message.response.ZoneChangeUpdate;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;

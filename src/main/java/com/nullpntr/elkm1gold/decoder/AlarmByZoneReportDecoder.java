@@ -1,6 +1,6 @@
-package decoder;
+package com.nullpntr.elkm1gold.decoder;
 
-import message.response.AlarmByZoneResponse;
+import com.nullpntr.elkm1gold.message.response.AlarmByZoneResponse;
 
 /**
  * Created by pborges on 1/22/15.

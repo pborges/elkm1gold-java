@@ -1,4 +1,4 @@
-package exception;
+package com.nullpntr.elkm1gold.exception;
 
 /**
  * Created by pborges on 2/6/15.

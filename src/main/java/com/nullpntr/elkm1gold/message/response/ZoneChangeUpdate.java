@@ -1,4 +1,4 @@
-package message.response;
+package com.nullpntr.elkm1gold.message.response;
 
 import com.google.gson.annotations.SerializedName;
 
