@@ -15,7 +15,6 @@ public class ElkMessageDecoder {
 
     private HashMap<String, ElkDecoder<? extends ElkResponse>> decoderHashMap = new HashMap<>();
     public ElkMessageDecoder(){
-        decoderHashMap.put("AZ", new AlarmByZoneReportDecoder());
         decoderHashMap.put("ZC", new ZoneChangeUpdateDecoder());
         decoderHashMap.put("AS", new ArmingStatusResponseDecoder());
     }

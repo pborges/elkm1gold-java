@@ -38,7 +38,7 @@ public class ElkModem {
 
     public void addListener(Class<? extends ElkResponse> clazz, ElkResponseProcessor<? extends ElkResponse> processor) throws AlreadyStartedException {
         log.debug("Loading " + clazz.getSimpleName() + " processor " + processor.getClass().getSimpleName());
-        if(isStarted) {
+        if (isStarted) {
             throw new AlreadyStartedException();
         }
         elkResponseProcessorMap.put(clazz, processor);
@@ -52,6 +52,11 @@ public class ElkModem {
     }
 
     public void sendRequest(Class<? extends ElkRequest> requestClass) throws IllegalAccessException, InstantiationException, IOException {
-        outputStreamWriter.write(elkRequestEncoder.encode(requestClass.newInstance()));
+        log.debug("sendRequest(" + requestClass.getSimpleName() + ")");
+        String encoded = elkRequestEncoder.encode(requestClass.newInstance());
+        log.debug("Write: " + encoded);
+        outputStreamWriter.write(encoded);
+        outputStreamWriter.write("\r\n");
+        outputStreamWriter.flush();
     }
 }

@@ -15,7 +15,6 @@ public class ElkResponseDecoderManager {
 
     private HashMap<String, ElkDecoder<? extends ElkResponse>> decoderHashMap = new HashMap<>();
     public ElkResponseDecoderManager(){
-        decoderHashMap.put("AZ", new AlarmByZoneReportDecoder());
         decoderHashMap.put("ZC", new ZoneChangeUpdateDecoder());
         decoderHashMap.put("AS", new ArmingStatusResponseDecoder());
     }
@@ -23,12 +22,12 @@ public class ElkResponseDecoderManager {
         String messageType = message.substring(2, 4);
         ElkDecoder decoder = decoderHashMap.get(messageType);
         if (decoder != null) {
-            log.debug("Found com.nullpntr.elkm1gold.message com.nullpntr.elkm1gold.decoder for " + decoder.getClass().getSimpleName());
+            log.debug("Found message decoder for " + decoder.getClass().getSimpleName());
             ElkResponse decoded = decoder.decode(message);
             log.debug(gson.toJson(decoded));
             return decoded;
         } else {
-            log.debug("Could not find com.nullpntr.elkm1gold.decoder for " + messageType);
+            log.debug("Could not find decoder for " + messageType);
             return null;
         }
     }
