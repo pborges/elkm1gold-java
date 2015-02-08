@@ -26,7 +26,7 @@ public class ElkModem {
     private boolean isStarted = false;
 
     public ElkModem(String serialPortName, Integer baud) throws PortInUseException, NoSuchPortException, UnsupportedCommOperationException, IOException {
-        log.debug("com.nullpntr.elkm1gold.ElkModem(" + serialPortName + ", " + baud + ")");
+        log.debug("ElkModem(" + serialPortName + ", " + baud + ")");
 
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(serialPortName);
         CommPort commPort = portIdentifier.open(this.getClass().getName(), 2000);
@@ -51,9 +51,9 @@ public class ElkModem {
         new Thread(elkSerialReader).start();
     }
 
-    public void sendRequest(Class<? extends ElkRequest> requestClass) throws IllegalAccessException, InstantiationException, IOException {
-        log.debug("sendRequest(" + requestClass.getSimpleName() + ")");
-        String encoded = elkRequestEncoder.encode(requestClass.newInstance());
+    public void sendRequest(Class<? extends ElkRequest> requestClazz) throws IllegalAccessException, InstantiationException, IOException {
+        log.debug("sendRequest(" + requestClazz.getSimpleName() + ")");
+        String encoded = elkRequestEncoder.encode(requestClazz.newInstance());
         log.debug("Write: " + encoded);
         outputStreamWriter.write(encoded);
         outputStreamWriter.write("\r\n");
